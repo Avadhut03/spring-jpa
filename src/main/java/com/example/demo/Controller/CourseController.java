@@ -21,4 +21,8 @@ public class CourseController {
     public Course saveCourse(@RequestBody  Course course){
         return courseService.saveCourse(course);
     }
+    @PutMapping("/{id}")
+    public Course updateCourse(@PathVariable Long id, @RequestBody Course course){
+            return courseService.updatedCourse(id,course);
+    }
 }

@@ -18,5 +18,13 @@ public class CourseService {
     public Course saveCourse(Course course){
         return courseRepository.save(course);
     }
+    public Course updatedCourse(Long id, Course updated){
+        return courseRepository.findById(id)
+                .map(course->{
+                    course.setName((updated.getName()));
+                    return courseRepository.save(course);
+                })
+                .orElseThrow(()-> new RuntimeException("Invalid id"));
+    }
 
 }
